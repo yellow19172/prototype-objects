@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        li{
+            list-style: none;
+            height: 60px;
+            width: 300px;
+            border:1px solid;
+            margin:10px;
+        }
+        .btn>a{
+            width:50px;
+            text-decoration: none;
+            background-color:black;
+            padding: 10px;
+            border-radius: 3px;
+            color:#ccc;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</div>
+<script>
+
+/*
+1. `ct`属性，GoTop 对应的 DOM 元素的容器
+2.  `target`属性， GoTop 对应的 DOM 元素
+3.  `bindEvent` 方法， 用于绑定事件
+4 `createNode` 方法， 用于在容器内创建节点
+*/
+
+function GoTop(ct) {
+    this.ct = $('.ct')
+    this.target =$('<div class="btn"><a href="#">GoTop</a></div>')
+}
+GoTop.prototype.bindEvent = function(){
+    this.target.click(function () {
+        $(window).scrollTop(0)
+    })
+}
+GoTop.prototype.createNode = function () {
+    this.target.appendTo(this.ct)
+}
+//var GoTop = new GoTop($('body'))
+//GoTop.createNode();
+//GoTop.bindEvent();
+
+var p1 = new GoTop($('.ct'))
+p1.createNode();
+p1.bindEvent();
+
+
+</script>
+</body>
+</html>
